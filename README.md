@@ -6,6 +6,7 @@ ecommerce/              # โฟลเดอร์หลักของโปร
 ├── env/                # Virtual Environment
 ├── mysite/             # ตัวเว็บไซต์หลัก
 ├── blog/               # แอพพลิเคชั่น blog
+├── products/           # แอพพลิเคชั่น products
 └── db.sqlite3          # ฐานข้อมูล
 ```
 
