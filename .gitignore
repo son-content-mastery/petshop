@@ -12,3 +12,6 @@ blog_images/
 
 # ไฟล์เฉพาะ OS
 .DS_Store
+
+# Environment variables
+.env
