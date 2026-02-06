@@ -1,0 +1,151 @@
+[
+    {
+      "name": "อาหารเม็ด (Dry Food)",
+      "slug": "dry-food",
+      "description": "อาหารเม็ดเกรดพรีเมียม สารอาหารครบถ้วน เคี้ยวมัน",
+      "image": "categories/dry_food.jpg",
+      "products": [
+        {
+          "name": "Maxima Cat Food 15kg",
+          "slug": "maxima-cat-food-15kg",
+          "description": "อาหารแมวแม็กซิม่า เกรดซุปเปอร์พรีเมียม",
+          "body": "สูตรบำรุงขนและผิวหนัง ควบคุมความเค็ม ลดความเสี่ยงโรคไต เหมาะสำหรับแมวทุกสายพันธุ์...",
+          "price": 1250.00,
+          "available": true,
+          "image": "products/maxima_15kg.jpg"
+        },
+        {
+          "name": "Royal Canin Indoor 27",
+          "slug": "royal-canin-indoor-27",
+          "description": "สำหรับแมวเลี้ยงในบ้าน กลิ่นมูลลดลง",
+          "body": "ช่วยลดกลิ่นมูล ปรับสมดุลพลังงานให้เหมาะสมกับแมวที่เลี้ยงในระบบปิด...",
+          "price": 540.00,
+          "available": true,
+          "image": "products/rc_indoor.jpg"
+        },
+        {
+          "name": "Purina One Salmon",
+          "slug": "purina-one-salmon",
+          "description": "เพียวริน่าวัน สูตรปลาแซลมอนและทูน่า",
+          "body": "โปรตีนสูงจากเนื้อปลาแท้ ช่วยเสริมสร้างกล้ามเนื้อและหัวใจ...",
+          "price": 420.00,
+          "available": true,
+          "image": "products/purina_salmon.jpg"
+        }
+      ]
+    },
+    {
+      "name": "อาหารเปียก (Wet Food)",
+      "slug": "wet-food",
+      "description": "อาหารเปียก รสชาติอร่อย เพิ่มปริมาณน้ำให้น้องแมว",
+      "image": "categories/wet_food.jpg",
+      "products": [
+        {
+          "name": "Me-O Pouch Tuna",
+          "slug": "meo-pouch-tuna",
+          "description": "มีโอ อาหารเปียก รสปลาทูน่า",
+          "body": "ทำจากเนื้อปลาแท้ๆ กลิ่นหอมเย้ายวนใจ แมวทานยากยังต้องยอม...",
+          "price": 18.00,
+          "available": true,
+          "image": "products/meo_pouch.jpg"
+        },
+        {
+          "name": "Nekko Tuna in Jelly",
+          "slug": "nekko-tuna-jelly",
+          "description": "เน็กโกะ ปลาทูน่าในเยลลี่",
+          "body": "เนื้อปลาชิ้นโตในเยลลี่นุ่มๆ เสริมวิตามิน E และ Taurine...",
+          "price": 15.00,
+          "available": true,
+          "image": "products/nekko_jelly.jpg"
+        },
+        {
+          "name": "Sheba Succulent Chicken",
+          "slug": "sheba-succulent-chicken",
+          "description": "ชีบา อกไก่ฉีกในน้ำเกรวี่",
+          "body": "เกรดพรีเมียม เนื้อไก่นุ่มชุ่มฉ่ำน้ำเกรวี่...",
+          "price": 35.00,
+          "available": false,
+          "image": "products/sheba_chicken.jpg"
+        }
+      ]
+    },
+    {
+      "name": "ขนมแมว (Treats)",
+      "slug": "cat-treats",
+      "description": "รางวัลสำหรับเด็กดี อร่อยเพลินเกินห้ามใจ",
+      "image": "categories/treats.jpg",
+      "products": [
+        {
+          "name": "Ciao Churu Tuna",
+          "slug": "ciao-churu-tuna",
+          "description": "เชา ชูหรุ ขนมแมวเลียยอดฮิต",
+          "body": "ขนมแมวเลียอันดับ 1 จากญี่ปุ่น รสทูน่าเนื้อเนียน...",
+          "price": 55.00,
+          "available": true,
+          "image": "products/ciao_churu.jpg"
+        },
+        {
+          "name": "Temptations Savoury Salmon",
+          "slug": "temptations-salmon",
+          "description": "เทมเทชันส์ รสแซลมอน",
+          "body": "กรอบนอก นุ่มใน เขย่าซองทีไรแมววิ่งมาทันที...",
+          "price": 85.00,
+          "available": true,
+          "image": "products/temptations.jpg"
+        },
+        {
+          "name": "JerHigh Jinny Stick",
+          "slug": "jerhigh-jinny-stick",
+          "description": "จินนี่ สติ๊ก รสไก่",
+          "body": "ขนมแท่งเคี้ยวเพลิน มี Green Tea Extract ช่วยลดกลิ่น...",
+          "price": 35.00,
+          "available": true,
+          "image": "products/jinny_stick.jpg"
+        }
+      ]
+    },
+    {
+      "name": "ของเล่น (Toys)",
+      "slug": "cat-toys",
+      "description": "อุปกรณ์คลายเครียดและออกกำลังกาย",
+      "image": "categories/toys.jpg",
+      "products": [
+        {
+          "name": "Laser Pointer",
+          "slug": "laser-pointer",
+          "description": "เลเซอร์ของเล่นแมว",
+          "body": "ไฟเลเซอร์สีแดง ส่องได้ไกล ช่วยให้แมวได้วิ่งไล่จับอย่างสนุกสนาน...",
+          "price": 120.00,
+          "available": true,
+          "image": "products/laser.jpg"
+        },
+        {
+          "name": "Catnip Mouse",
+          "slug": "catnip-mouse",
+          "description": "หนูแคทนิป",
+          "body": "ตุ๊กตาหนูยัดไส้กัญชาแมว (Catnip) ให้แมวเคลิบเคลิ้มและผ่อนคลาย...",
+          "price": 89.00,
+          "available": true,
+          "image": "products/mouse.jpg"
+        },
+        {
+          "name": "Feather Wand",
+          "slug": "feather-wand",
+          "description": "ไม้ตกแมวขนนก",
+          "body": "ไม้ตกแมวแบบยาว ปลายติดขนนกและกระดิ่ง...",
+          "price": 45.00,
+          "available": true,
+          "image": "products/wand.jpg"
+        },
+        {
+          "name": "Scratching Board",
+          "slug": "scratching-board",
+          "description": "ที่ลับเล็บแมวทรงโซฟา",
+          "body": "ทำจากกระดาษลูกฟูกอัดแข็ง ให้แมวฝนเล็บได้สะใจ ไม่ไปข่วนเฟอร์นิเจอร์...",
+          "price": 199.00,
+          "available": true,
+          "image": "products/scratch.jpg"
+        }
+      ]
+    }
+  ]
