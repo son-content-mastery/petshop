@@ -3,14 +3,30 @@ version: '3.8'
 services:
   web:
     build: .
+    # ใช้ Gunicorn แทน runserver
     command: gunicorn mysite.wsgi:application --bind 0.0.0.0:8000
-    ports:
-      - "8000:8000"
+    expose:
+      - 8000  # ใช้ expose เพื่อให้คุยกันแค่ภายใน Network (ปิด Port 8000 จากภายนอก)
     env_file:
       - .env
     restart: always
+    volumes:
+      - static_volume:/app/static  # Mount Volume สำหรับ Static Files
+      - media_volume:/app/media    # Mount Volume สำหรับ Media Files
     depends_on:
       - db
+
+  nginx:
+    image: nginx:1.25-alpine
+    restart: always
+    ports:
+      - "80:80" # เปิด Port 80 (HTTP) ออกสู่ภายนอก
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf # Map Config File
+      - static_volume:/app/static  # อ่าน Static Files จาก Volume เดียวกับ Web
+      - media_volume:/app/media
+    depends_on:
+      - web
 
   db:
     image: postgres:15-alpine
@@ -24,3 +40,5 @@ services:
 
 volumes:
   postgres_data:
+  static_volume: # Named Volume สำหรับแชร์ไฟล์ระหว่าง Container
+  media_volume:
