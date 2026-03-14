@@ -12,3 +12,11 @@ DEBUG = True
 
 # Allow local development hosts
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
+
+# Use SQLite for development
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
