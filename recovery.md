@@ -57,6 +57,14 @@ Install all required Python packages:
 pip install -r requirements.txt
 ```
 
+If dependency build errors occur on Windows, use these exact commands to install known working packages:
+
+```powershell
+python -m pip install django-summernote
+python -m pip install Pillow
+python -m pip install psycopg2-binary
+```
+
 This installs Django, PostgreSQL driver, and other dependencies listed in `requirements.txt`.
 
 ## Step 5: Configure Environment Variables
@@ -122,10 +130,14 @@ Open your web browser and navigate to:
 - **Solution:** Create the `.env` file as described in Step 5
 
 #### 3. "ModuleNotFoundError: No module named 'psycopg2'"
-- **Cause:** PostgreSQL driver not installed
-- **Solution:** Run `pip install -r requirements.txt` again
+- **Cause:** PostgreSQL driver not installed or not built because `pg_config` is missing (common on Windows)
+- **Solution:** Install binary package with `python -m pip install psycopg2-binary` and retry.
 
-#### 4. Database connection errors
+#### 4. "Cannot use ImageField because Pillow is not installed"
+- **Cause:** Pillow dependency missing
+- **Solution:** `python -m pip install Pillow`
+
+#### 5. Database connection errors
 - **Cause:** PostgreSQL not running or misconfigured
 - **Solution:** The project is configured to use SQLite for development in `mysite/settings/dev.py`
 
