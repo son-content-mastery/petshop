@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product, Category
 
 
-def product_detail(request, category_slug, product_slug):
-    # Get the category and ensure the product belongs to it
-    category = get_object_or_404(Category, slug=category_slug)
-    product = get_object_or_404(Product, slug=product_slug, category=category, available=True)
+def product_detail(request, product_slug):
+    # Get the product and its category
+    product = get_object_or_404(Product, slug=product_slug, available=True)
+    category = product.category
 
     # Query related products (same category, exclude current product)
     related_products = Product.objects.filter(
@@ -21,9 +21,9 @@ def product_detail(request, category_slug, product_slug):
     return render(request, 'products/product-detail.html', context)
 
 
-def category(request, slug):
+def category_detail(request, category_slug):
     # Get the category
-    category = get_object_or_404(Category, slug=slug)
+    category = get_object_or_404(Category, slug=category_slug)
 
     # Get products and FAQs for the category
     products = category.products.filter(available=True)
