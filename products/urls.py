@@ -1,11 +1,12 @@
 from django.urls import path
-from .views import (
-    product_detail, 
-    category
-)
+from . import views
 
+app_name = 'products'
 
 urlpatterns = [
-    path('<slug:slug>/', category, name='category'),
-    path('<slug:category_slug>/<slug:product_slug>/', product_detail, name='product_detail'),
+    # Product detail: /products/<product_slug>/
+    path('products/<slug:product_slug>/', views.product_detail, name='product_detail'),
+    
+    # Category detail as catch-all: /<category_slug>/
+    path('<slug:category_slug>/', views.category_detail, name='category'),
 ]
