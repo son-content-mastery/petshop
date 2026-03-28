@@ -63,6 +63,10 @@ If dependency build errors occur on Windows, use these exact commands to install
 python -m pip install django-summernote
 python -m pip install Pillow
 python -m pip install psycopg2-binary
+
+Run server/test:
+python manage.py test --verbosity 2
+python manage.py runserver
 ```
 
 This installs Django, PostgreSQL driver, and other dependencies listed in `requirements.txt`.
@@ -230,7 +234,33 @@ docker-compose -f docker-compose.prod.yml up -d
 ```
 
 This uses Gunicorn and Nginx for production-ready deployment.
+## Admin superuser (create Django admin account)
 
+To access the Django admin UI, create a superuser account:
+
+```powershell
+python manage.py createsuperuser
+```
+
+Then follow prompts for:
+- username
+- email address
+- password (enter twice)
+
+If your database is not yet migrated, run first:
+
+```powershell
+python manage.py makemigrations
+python manage.py migrate
+```
+
+Start the dev server:
+
+```powershell
+python manage.py runserver
+```
+
+Open `http://127.0.0.1:8000/admin/` and log in with the superuser credentials.
 ## Support
 
 If you encounter issues not covered in this guide, check:
