@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post 
 from products.models import Product, Category
 
@@ -36,5 +36,15 @@ def post_detail(request, slug):
     }
     return render(request, 'blog/blog-detail.html', context)
 
+
+def contact(request):
+    if request.method == 'POST':
+        return redirect('contact_success')
+
+    return render(request, 'blog/contact.html')
+
+
+def contact_success(request):
+    return render(request, 'blog/contact-success.html')
 
 
