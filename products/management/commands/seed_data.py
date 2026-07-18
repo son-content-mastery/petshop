@@ -147,7 +147,16 @@ class Command(BaseCommand):
 
         image_data = self.image_cache.get(url)
         if image_data is None:
-            request = Request(url, headers={'User-Agent': 'Meowsalid seed_data/1.0'})
+            request = Request(
+                url,
+                headers={
+                    'Accept': 'image/*',
+                    'User-Agent': (
+                        'MeowsalidMediaSeeder/1.0 '
+                        '(+https://meowsalid.com/contact/; hello@meowsalid.com)'
+                    ),
+                },
+            )
             for attempt in range(3):
                 try:
                     with urlopen(request, timeout=30) as response:
@@ -158,6 +167,7 @@ class Command(BaseCommand):
                         if len(image_data) > 8 * 1024 * 1024:
                             raise ValueError('image is larger than 8 MB')
                     self.image_cache[url] = image_data
+                    time.sleep(1)
                     break
                 except HTTPError as exc:
                     if exc.code != 429 or attempt == 2:
