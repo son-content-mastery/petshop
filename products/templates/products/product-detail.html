@@ -21,7 +21,10 @@
         <!-- Product Image -->
         <div class="col-md-6">
             {% if product.image %}
-            <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+            <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.image_alt|default:product.name }}">
+            {% if product.image_credit %}
+            <p class="small text-secondary mt-2">{% if product.image_source_url %}<a class="text-secondary" href="{{ product.image_source_url }}" rel="nofollow noopener" target="_blank">{% endif %}{{ product.image_credit }}{% if product.image_source_url %}</a>{% endif %}</p>
+            {% endif %}
             {% else %}
             <img src="https://via.placeholder.com/400x400" class="img-fluid" alt="{{ product.name }}">
             {% endif %}
@@ -88,6 +91,19 @@
             </div>
         </div>
     </div>
+    {% endif %}
+
+    {% if related_posts %}
+    <section class="row mt-5">
+        <div class="col-md-12">
+            <h3>อ่านเพิ่มเติมก่อนเลือกซื้อ</h3>
+            <div class="row row-cols-1 row-cols-md-3 g-3">
+                {% for post in related_posts %}
+                <div class="col"><a class="card card-body h-100 text-dark text-decoration-none" href="{{ post.get_absolute_url }}"><strong>{{ post.title }}</strong><span class="text-secondary mt-2">{{ post.description }}</span></a></div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
     {% endif %}
 </div>
 {% endblock %}

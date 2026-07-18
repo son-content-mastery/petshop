@@ -1,0 +1,43 @@
+{% extends 'blog/base.html' %}
+
+{% block meta %}
+<title>บทความดูแลแมว | Meowsalid</title>
+<meta name="description" content="รวมบทความเรื่องอาหาร สุขภาพ และการดูแลแมว พร้อมคำแนะนำเลือกสินค้าที่เหมาะกับแมวของคุณ">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+{% endblock %}
+
+{% block content %}
+<main class="container py-5">
+    <div class="row align-items-end mb-4">
+        <div class="col-lg-8">
+            <p class="text-uppercase text-success fw-semibold mb-2">Meowsalid Journal</p>
+            <h1 class="display-5 fw-bold">บทความดูแลแมว</h1>
+            <p class="lead text-secondary mb-0">คำแนะนำที่นำไปใช้ได้จริง ตั้งแต่การเลือกอาหารไปจนถึงการเพิ่มกิจกรรมในบ้าน</p>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for post in posts %}
+        <article class="col">
+            <div class="card h-100 border-0 shadow-sm overflow-hidden">
+                {% if post.featured_image %}
+                <a href="{{ post.get_absolute_url }}">
+                    <img src="{{ post.featured_image.url }}" class="card-img-top" style="height: 230px; object-fit: cover;" alt="{{ post.featured_image_alt|default:post.title }}">
+                </a>
+                {% endif %}
+                <div class="card-body d-flex flex-column p-4">
+                    <p class="small text-secondary mb-2">{{ post.date_created|date:"j F Y" }}{% if post.author %} · {{ post.author.name }}{% endif %}</p>
+                    <h2 class="h4"><a class="text-dark text-decoration-none" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                    <p class="text-secondary">{{ post.description }}</p>
+                    <a class="btn btn-outline-success mt-auto align-self-start" href="{{ post.get_absolute_url }}">อ่านบทความ</a>
+                </div>
+            </div>
+        </article>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-light border">ยังไม่มีบทความในขณะนี้</div>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

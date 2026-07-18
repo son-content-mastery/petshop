@@ -97,6 +97,29 @@ python manage.py runserver
 deactivate
 ```
 
+## Seed ข้อมูลสินค้าและบทความ
+
+คำสั่งนี้สร้างหรืออัปเดตข้อมูลด้วย `slug` จึงรันซ้ำได้โดยไม่สร้างรายการซ้ำ และจะดาวน์โหลดภาพจาก Wikimedia Commons เข้า media storage ในครั้งแรก
+
+```bash
+# Local Docker
+docker compose exec web python manage.py migrate
+docker compose exec web python manage.py seed_data
+
+# Production Docker
+docker compose -f docker-compose.prod.yml exec web python manage.py migrate
+docker compose -f docker-compose.prod.yml exec web python manage.py seed_data
+```
+
+หาก production server ดาวน์โหลดรูปไว้แล้ว หรือจำเป็นต้อง seed โดยไม่มี network ให้เพิ่ม `--skip-images` ส่วน `--refresh-images` ใช้ดาวน์โหลดภาพใหม่ทับไฟล์เดิม
+
+หลัง deploy สามารถตรวจ technical SEO endpoints ได้ที่:
+
+- `https://meowsalid.com/robots.txt`
+- `https://meowsalid.com/sitemap.xml`
+
+ค่า canonical domain อ่านจาก `SITE_URL` และมีค่าเริ่มต้นเป็น `https://meowsalid.com` หากใช้โดเมนอื่นให้กำหนด `SITE_URL` ใน `.env`
+
 ## การแก้ปัญหาเบื้องต้น
 
 1. ถ้ารันเซิร์ฟเวอร์ไม่ได้:
