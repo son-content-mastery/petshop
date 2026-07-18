@@ -1,95 +1,248 @@
-{% extends 'blog/base.html' %} 
-{% block meta %}<title>Meowsalid | อาหาร ขนม และของเล่นสำหรับแมว</title>
+{% extends 'blog/base.html' %}
+
+{% block meta %}
+<title>Meowsalid | อาหาร ขนม และของเล่นสำหรับแมว</title>
 <meta name="description" content="เลือกซื้ออาหารแมว ขนม และของเล่น พร้อมบทความช่วยเลือกสินค้าที่เหมาะกับวัยและไลฟ์สไตล์ของแมว จัดส่งทั่วประเทศไทย">
 <link rel="canonical" href="{{ request.build_absolute_uri }}">
-{% endblock %} 
+{% endblock %}
 
-{% block content %} 
-<div class="container py-4 py-lg-5">
-    <section class="home-hero mb-5" aria-labelledby="home-hero-title">
-        <div class="row align-items-center g-5">
-                <div class="col-lg-6 home-hero-content">
-                    <p class="footer-kicker mb-3">Thoughtful choices for every cat</p>
-                    <h1 id="home-hero-title" class="display-4 fw-bold">มื้อที่เหมาะกว่า เพื่อวันที่ดีของเจ้าเหมียว</h1>
-                    <p class="lead footer-copy mt-4">รวมอาหาร ขนม และของเล่นสำหรับแมว พร้อมข้อมูลช่วยเลือกให้เหมาะกับวัย พฤติกรรม และไลฟ์สไตล์</p>
-                    <div class="d-flex flex-wrap gap-3 mt-4">
-                        <a class="btn btn-success btn-lg" href="{% url 'products:category' category_slug='dry-food' %}">เลือกซื้ออาหารแมว</a>
-                        <a class="btn btn-outline-dark btn-lg" href="{% url 'post_list' %}">อ่านคู่มือดูแลแมว</a>
+{% block extra_css %}
+<style>
+    .home-page { --home-ink: #17352c; --home-muted: #587168; --home-orange: #d87531; overflow: hidden; }
+    .home-shell { width: min(1400px, calc(100% - 2rem)); margin-inline: auto; }
+    .store-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        min-height: 570px;
+        overflow: hidden;
+        background: #edf2e9;
+        border: 1px solid rgba(23, 53, 44, 0.13);
+        border-radius: 2rem;
+        box-shadow: 0 1.5rem 5rem rgba(23, 53, 44, 0.1);
+    }
+    .store-hero-copy {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(2.5rem, 5vw, 5.5rem);
+        background:
+            radial-gradient(circle at 10% 5%, rgba(216, 117, 49, 0.22), transparent 17rem),
+            #edf2e9;
+    }
+    .store-hero-copy::after {
+        position: absolute;
+        right: -3rem;
+        bottom: 2.5rem;
+        width: 7rem;
+        height: 7rem;
+        content: "";
+        border: 1px solid rgba(23, 53, 44, 0.15);
+        border-radius: 50%;
+    }
+    .home-eyebrow { margin-bottom: 1rem; color: var(--home-orange); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
+    .store-hero h1 { max-width: 11ch; margin: 0; font-size: clamp(2.8rem, 5.2vw, 5.25rem); font-weight: 700; letter-spacing: -0.055em; line-height: 1.02; }
+    .store-hero-lead { max-width: 35rem; margin: 1.5rem 0 0; color: var(--home-muted); font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.75; }
+    .store-hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+    .home-primary, .home-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 3.25rem; padding: 0.75rem 1.25rem; font-weight: 700; text-decoration: none; border-radius: 999px; }
+    .home-primary { color: #fff; background: var(--home-ink); border: 1px solid var(--home-ink); }
+    .home-primary:hover, .home-primary:focus { color: #fff; background: #285849; transform: translateY(-2px); }
+    .home-secondary { color: var(--home-ink); border: 1px solid rgba(23, 53, 44, 0.35); }
+    .home-secondary:hover, .home-secondary:focus { color: var(--home-ink); background: rgba(255, 255, 255, 0.65); }
+    .store-hero-media { position: relative; min-width: 0; background: #cad8c9; }
+    .store-hero-image { width: 100%; height: 100%; min-height: 570px; object-fit: cover; object-position: center; }
+    .hero-image-credit { position: absolute; right: 1rem; bottom: 1rem; padding: 0.4rem 0.65rem; color: rgba(255, 255, 255, 0.86); font-size: 0.7rem; text-decoration: none; background: rgba(12, 27, 23, 0.58); border-radius: 999px; backdrop-filter: blur(8px); }
+    .hero-note { position: absolute; left: 1.25rem; bottom: 1.25rem; max-width: 15rem; padding: 1rem 1.1rem; color: var(--home-ink); background: rgba(255, 253, 248, 0.94); border-radius: 1rem; box-shadow: 0 1rem 2.5rem rgba(23, 53, 44, 0.18); }
+    .hero-note strong, .hero-note span { display: block; }
+    .hero-note span { margin-top: 0.25rem; color: var(--home-muted); font-size: 0.8rem; }
+    .home-trust { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 1rem; border: 1px solid rgba(23, 53, 44, 0.12); border-radius: 1.25rem; background: #fff; }
+    .home-trust-item { display: flex; gap: 0.85rem; align-items: center; padding: 1.25rem 1.5rem; }
+    .home-trust-item + .home-trust-item { border-left: 1px solid rgba(23, 53, 44, 0.12); }
+    .home-trust-index { color: var(--home-orange); font-family: "DM Serif Display", serif; font-size: 1.55rem; }
+    .home-trust-item strong, .home-trust-item span { display: block; }
+    .home-trust-item span { color: var(--home-muted); font-size: 0.84rem; }
+    .home-section { padding-block: clamp(4.5rem, 8vw, 7rem); }
+    .home-section-head { display: flex; gap: 2rem; align-items: end; justify-content: space-between; margin-bottom: 2rem; }
+    .home-section-head h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; letter-spacing: -0.045em; }
+    .home-section-head p { max-width: 34rem; margin: 0; color: var(--home-muted); line-height: 1.7; }
+    .section-link { flex: 0 0 auto; color: var(--home-ink); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 0.35rem; }
+    .category-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .category-tile { position: relative; min-height: 18rem; overflow: hidden; padding: 1.5rem; color: var(--home-ink); text-decoration: none; background: #e4ede4; border: 1px solid rgba(23, 53, 44, 0.1); border-radius: 1.35rem; transition: transform 180ms ease, box-shadow 180ms ease; }
+    .category-tile:nth-child(2) { background: #f5e8d5; }
+    .category-tile:nth-child(3) { background: #eadfcb; }
+    .category-tile:nth-child(4) { background: #dce9e9; }
+    .category-tile:hover, .category-tile:focus { color: var(--home-ink); transform: translateY(-5px); box-shadow: 0 1rem 2.5rem rgba(23, 53, 44, 0.12); }
+    .category-number { color: rgba(23, 53, 44, 0.45); font-family: "DM Serif Display", serif; font-size: 1.2rem; }
+    .category-tile h3 { max-width: 12ch; margin: 4rem 0 0.8rem; font-size: 1.55rem; font-weight: 700; }
+    .category-tile p { margin: 0; color: var(--home-muted); font-size: 0.9rem; line-height: 1.6; }
+    .category-arrow { position: absolute; right: 1.25rem; bottom: 1.25rem; display: grid; width: 2.8rem; height: 2.8rem; place-items: center; font-size: 1.3rem; border: 1px solid rgba(23, 53, 44, 0.25); border-radius: 50%; }
+    .featured-wrap { color: #f9f5ea; background: var(--home-ink); }
+    .featured-wrap .home-eyebrow { color: #efa66e; }
+    .featured-wrap .home-section-head p { color: #b8cbc4; }
+    .featured-wrap .section-link { color: #fff; }
+    .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .product-card { display: flex; min-width: 0; flex-direction: column; overflow: hidden; color: var(--home-ink); background: #fffdf8; border-radius: 1.35rem; }
+    .product-card-media { display: block; overflow: hidden; background: #e7ece6; aspect-ratio: 4 / 3; }
+    .product-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 320ms ease; }
+    .product-card:hover .product-card-media img { transform: scale(1.035); }
+    .product-card-body { display: flex; flex: 1; flex-direction: column; padding: 1.25rem; }
+    .product-category { margin-bottom: 0.45rem; color: var(--home-orange); font-size: 0.73rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .product-card h3 { margin: 0; font-size: 1.15rem; font-weight: 700; line-height: 1.4; }
+    .product-card h3 a { color: inherit; text-decoration: none; }
+    .product-card p { margin: 0.75rem 0 1.25rem; color: var(--home-muted); font-size: 0.88rem; }
+    .product-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+    .product-price { font-size: 1.2rem; font-weight: 700; }
+    .product-detail-link { color: var(--home-ink); font-weight: 700; text-decoration: none; }
+    .article-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .article-card { overflow: hidden; background: #fff; border: 1px solid rgba(23, 53, 44, 0.12); border-radius: 1.35rem; transition: transform 180ms ease, box-shadow 180ms ease; }
+    .article-card:hover { transform: translateY(-4px); box-shadow: 0 1rem 2.5rem rgba(23, 53, 44, 0.1); }
+    .article-image-link { display: block; overflow: hidden; aspect-ratio: 16 / 10; background: #e7ece6; }
+    .article-image-link img { width: 100%; height: 100%; object-fit: cover; transition: transform 320ms ease; }
+    .article-card:hover img { transform: scale(1.035); }
+    .article-body { padding: 1.4rem; }
+    .article-meta { margin-bottom: 0.7rem; color: var(--home-orange); font-size: 0.78rem; font-weight: 600; }
+    .article-card h3 { margin: 0; font-size: 1.3rem; line-height: 1.45; }
+    .article-card h3 a { color: var(--home-ink); text-decoration: none; }
+    .article-card p { margin: 0.8rem 0 1rem; color: var(--home-muted); line-height: 1.65; }
+    .article-read { color: var(--home-ink); font-weight: 700; text-underline-offset: 0.3rem; }
+    .home-final-cta { display: flex; gap: 2rem; align-items: center; justify-content: space-between; padding: clamp(2rem, 5vw, 4rem); background: #f3e4ce; border-radius: 1.5rem; }
+    .home-final-cta h2 { max-width: 17ch; margin: 0; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 700; letter-spacing: -0.04em; }
+    .home-final-cta p { max-width: 35rem; margin: 0.75rem 0 0; color: var(--home-muted); }
+    .store-hero-copy, .store-hero-media, .home-trust { animation: home-rise 500ms ease both; }
+    .store-hero-media { animation-delay: 80ms; }
+    .home-trust { animation-delay: 150ms; }
+    @keyframes home-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @media (prefers-reduced-motion: reduce) { .store-hero-copy, .store-hero-media, .home-trust { animation: none; } }
+    @media (max-width: 991.98px) {
+        .store-hero { grid-template-columns: 1fr; }
+        .store-hero-copy { padding: 3rem; }
+        .store-hero h1 { max-width: 14ch; }
+        .store-hero-image { min-height: 390px; max-height: 480px; }
+        .store-hero-copy::after { display: none; }
+        .category-grid, .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .article-grid { grid-template-columns: 1fr; }
+        .article-card { display: grid; grid-template-columns: minmax(220px, 0.8fr) 1fr; }
+        .article-image-link { height: 100%; aspect-ratio: auto; }
+    }
+    @media (max-width: 767.98px) {
+        .home-trust { grid-template-columns: 1fr; }
+        .home-trust-item + .home-trust-item { border-top: 1px solid rgba(23, 53, 44, 0.12); border-left: 0; }
+        .home-section-head, .home-final-cta { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 575.98px) {
+        .home-shell { width: min(100% - 1rem, 1400px); }
+        .store-hero { min-height: auto; border-radius: 1.25rem; }
+        .store-hero-copy { padding: 2rem 1.35rem; }
+        .store-hero h1 { font-size: clamp(2.35rem, 12vw, 3.4rem); }
+        .store-hero-image { min-height: 300px; }
+        .hero-note { right: 0.8rem; bottom: 0.8rem; left: 0.8rem; max-width: none; }
+        .hero-image-credit { display: none; }
+        .category-grid, .product-grid { grid-template-columns: 1fr; }
+        .category-tile { min-height: 15rem; }
+        .article-card { display: block; }
+        .article-image-link { aspect-ratio: 16 / 10; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="home-page">
+    <div class="home-shell pt-3 pt-lg-4">
+        <section class="store-hero" aria-labelledby="home-hero-title">
+            <div class="store-hero-copy">
+                <p class="home-eyebrow">Meowsalid Cat Store</p>
+                <h1 id="home-hero-title">เลือกสิ่งที่ใช่ ให้แมวในแบบของเขา</h1>
+                <p class="store-hero-lead">อาหาร ขนม และของเล่นที่เลือกง่ายขึ้น พร้อมคู่มือช่วยตัดสินใจสำหรับทุกช่วงวัยและไลฟ์สไตล์</p>
+                <div class="store-hero-actions">
+                    <a class="home-primary" href="{% url 'products:category' category_slug='dry-food' %}">เลือกซื้ออาหารแมว <span class="ms-2" aria-hidden="true">→</span></a>
+                    <a class="home-secondary" href="{% url 'post_list' %}">อ่านคู่มือดูแลแมว</a>
+                </div>
+            </div>
+            <div class="store-hero-media">
+                {% if hero_post.featured_image %}
+                <img src="{{ hero_post.featured_image.url }}" alt="{{ hero_post.featured_image_alt|default:'แมวกำลังกินอาหารในบ้าน' }}" class="store-hero-image" width="1280" height="960" fetchpriority="high">
+                {% else %}
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/2019-10-23_18_51_36_Three_cats_eating_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-2019-10-23_18_51_36_Three_cats_eating_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg" alt="แมวสามตัวกำลังกินอาหารในบ้าน" class="store-hero-image" width="1280" height="960" fetchpriority="high">
+                {% endif %}
+                <div class="hero-note"><strong>เลือกจากความต้องการจริง</strong><span>วัย กิจกรรม และพฤติกรรมของแมวแต่ละตัว</span></div>
+                <a class="hero-image-credit" href="https://commons.wikimedia.org/wiki/File:2019-10-23_18_51_36_Three_cats_eating_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg" rel="nofollow noopener" target="_blank">ภาพ: Famartin / CC BY-SA 4.0</a>
+            </div>
+        </section>
+
+        <div class="home-trust" aria-label="บริการของ Meowsalid">
+            <div class="home-trust-item"><span class="home-trust-index">01</span><div><strong>จัดส่งทั่วประเทศไทย</strong><span>สั่งง่ายผ่าน LINE</span></div></div>
+            <div class="home-trust-item"><span class="home-trust-index">02</span><div><strong>เลือกตามไลฟ์สไตล์</strong><span>อาหาร ขนม และกิจกรรม</span></div></div>
+            <div class="home-trust-item"><span class="home-trust-index">03</span><div><strong>มีคู่มือประกอบการเลือก</strong><span>อ่านก่อนตัดสินใจซื้อ</span></div></div>
+        </div>
+
+        <section class="home-section" aria-labelledby="category-heading">
+            <div class="home-section-head">
+                <div><p class="home-eyebrow">Shop by need</p><h2 id="category-heading">เริ่มจากสิ่งที่แมวต้องการ</h2></div>
+                <p>เลือกหมวดที่ตรงกับมื้ออาหาร รางวัล หรือกิจกรรมของเจ้าเหมียว แล้วค่อยเปรียบเทียบตัวเลือกที่เหมาะที่สุด</p>
+            </div>
+            <div class="category-grid">
+                {% for category in categories %}
+                <a class="category-tile" href="{{ category.get_absolute_url }}">
+                    <span class="category-number">0{{ forloop.counter }}</span>
+                    <h3>{{ category.name }}</h3>
+                    <p>{{ category.description|truncatechars:90 }}</p>
+                    <span class="category-arrow" aria-hidden="true">→</span>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <section class="featured-wrap home-section" aria-labelledby="featured-heading">
+        <div class="home-shell">
+            <div class="home-section-head">
+                <div><p class="home-eyebrow">Selected for your cat</p><h2 id="featured-heading">ตัวเลือกแนะนำ</h2></div>
+                <a class="section-link" href="{% url 'products:category' category_slug='dry-food' %}">ดูหมวดอาหารแมวทั้งหมด →</a>
+            </div>
+            <div class="product-grid">
+                {% for product in products %}
+                <article class="product-card">
+                    <a class="product-card-media" href="{{ product.get_absolute_url }}">
+                        {% if product.image %}<img src="{{ product.image.url }}" alt="{{ product.image_alt|default:product.name }}" loading="lazy" width="640" height="480">{% endif %}
+                    </a>
+                    <div class="product-card-body">
+                        <span class="product-category">{{ product.category.name }}</span>
+                        <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+                        <p>{{ product.description|striptags|truncatechars:82 }}</p>
+                        <div class="product-card-footer"><span class="product-price">฿{{ product.price }}</span><a class="product-detail-link" href="{{ product.get_absolute_url }}" aria-label="ดูรายละเอียด {{ product.name }}">ดูสินค้า →</a></div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <figure class="home-hero-figure mb-0">
-                        {% if hero_post.featured_image %}
-                        <img src="{{ hero_post.featured_image.url }}" alt="{{ hero_post.featured_image_alt|default:'แมวกำลังกินอาหารในบ้าน' }}" class="home-hero-image" width="1280" height="960" fetchpriority="high">
-                        {% else %}
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/2019-10-23_18_51_36_Three_cats_eating_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-2019-10-23_18_51_36_Three_cats_eating_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg" alt="แมวสามตัวกำลังกินอาหารในบ้าน" class="home-hero-image" width="1280" height="960" fetchpriority="high">
-                        {% endif %}
-                        <figcaption class="small text-secondary mt-2">
-                            <a class="text-secondary" href="https://commons.wikimedia.org/wiki/File:2019-10-23_18_51_36_Three_cats_eating_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg" rel="nofollow noopener" target="_blank">ภาพโดย Famartin, CC BY-SA 4.0, Wikimedia Commons</a>
-                        </figcaption>
-                    </figure>
-                </div>
+                </article>
+                {% endfor %}
+            </div>
         </div>
     </section>
-    <section>
-        <h2>อาหารแมว แยกตามหมวดหมู่</h2>
-        <div class="row"> 
-          {% for category in categories %} <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        {% if category.image %}<img src="{{ category.image.url }}" class="card-img-top" alt="{{ category.name }}" loading="lazy">{% endif %}
-                        <h5 class="card-title">{{ category.name }}</h5>
-                        <p class="card-text">{{ category.description }}</p>
-                        <div class="d-flex justify-content-center">
-                            <a href="{{ category.get_absolute_url }}" class="btn btn-outline-primary">อ่านเพิ่มเติม</a>
-                        </div>
+
+    <div class="home-shell">
+        <section class="home-section" aria-labelledby="journal-heading">
+            <div class="home-section-head">
+                <div><p class="home-eyebrow">Meowsalid Journal</p><h2 id="journal-heading">อ่านก่อนเลือก ดูแลได้ดีขึ้น</h2></div>
+                <a class="section-link" href="{% url 'post_list' %}">ดูบทความทั้งหมด →</a>
+            </div>
+            <div class="article-grid">
+                {% for post in all_posts %}
+                <article class="article-card">
+                    {% if post.featured_image %}<a class="article-image-link" href="{{ post.get_absolute_url }}"><img src="{{ post.featured_image.url }}" alt="{{ post.featured_image_alt|default:post.title }}" loading="lazy" width="720" height="450"></a>{% endif %}
+                    <div class="article-body">
+                        <p class="article-meta">{{ post.date_created|date:"j F Y" }}</p>
+                        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                        <p>{{ post.description|striptags|truncatechars:120 }}</p>
+                        <a class="article-read" href="{{ post.get_absolute_url }}">อ่านบทความ</a>
                     </div>
-                </div>
-            </div> 
-          {% endfor %} </div>
-        <br>
-        <br>
-    </section>
-    <section>
-        <h2>สินค้ายอดนิยม</h2>
-        <!-- Products Grid -->
-        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4"> 
-	          {% for product in products %} <div class="col mb-4">
-	                <div class="card h-100"> {% if product.image %} <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.image_alt|default:product.name }}" loading="lazy"> {% endif %} <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">{{ product.description|striptags|truncatechars:40 }}</p>
-                        <h4 class="text-success">฿{{ product.price }}</h4>
-                        <p class="text-muted">หมวดหมู่: <a href="{{ product.category.get_absolute_url }}">
-                                {{ product.category.name }}
-                            </a>
-                        </p>
-                        <div class="d-flex justify-content-center">
-                            <a href="{{ product.get_absolute_url }}" class="btn btn-primary">รายละเอียด</a>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-          {% endfor %} </div>
-        <br>
-        <br>
-    </section>
-    <!-- Blog Section -->
-    <section>
-        <h2>บทความล่าสุด</h2>
-        <!-- Blog Grid -->
-        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"> 
-	          {% for post in all_posts %} <div class="col mb-4">
-	                <div class="card h-100"> {% if post.featured_image %} <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.featured_image_alt|default:post.title }}" loading="lazy"> {% endif %} <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text">{{ post.description |striptags|truncatechars:60}}</p>
-                        <div class="d-flex justify-content-center">
-                            <a href="{{ post.get_absolute_url }}" class="btn btn-outline-dark">อ่านเพิ่มเติม</a>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-          {% endfor %} </div>
-    </section>
-    <!-- End Blog Section -->
-</div> 
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="home-final-cta" aria-labelledby="home-contact-heading">
+            <div><p class="home-eyebrow">Need a hand?</p><h2 id="home-contact-heading">ยังไม่แน่ใจว่าจะเริ่มจากสินค้าแบบไหน</h2><p>ส่งรายละเอียดอายุ น้ำหนัก และสิ่งที่แมวชอบมาให้เราช่วยแนะนำตัวเลือกเบื้องต้น</p></div>
+            <a class="home-primary flex-shrink-0" href="https://line.me/R/ti/p/@781nazgq" rel="nofollow noopener" target="_blank">คุยกับเราทาง LINE →</a>
+        </section>
+    </div>
+</main>
 {% endblock %}

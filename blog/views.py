@@ -4,9 +4,26 @@ from products.models import Product, Category
 
 
 def home(request):
-    all_posts = Post.objects.select_related('author').order_by('-date_created')
-    products = Product.objects.filter(available=True).select_related('category')
-    categories = Category.objects.all()
+    all_posts = Post.objects.select_related('author').order_by('-date_created')[:3]
+    featured_product_slugs = [
+        'indoor-balance-chicken-1-5kg',
+        'ocean-recipe-tuna-in-broth-70g',
+        'freeze-dried-chicken-bites-40g',
+        'interactive-treat-puzzle',
+    ]
+    products_by_slug = {
+        product.slug: product
+        for product in Product.objects.filter(
+            available=True,
+            slug__in=featured_product_slugs,
+        ).select_related('category')
+    }
+    products = [
+        products_by_slug[slug]
+        for slug in featured_product_slugs
+        if slug in products_by_slug
+    ]
+    categories = Category.objects.order_by('name')
     hero_post = Post.objects.filter(
         slug='choose-dry-cat-food-by-age-and-lifestyle',
     ).first()
