@@ -27,6 +27,9 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     available = models.BooleanField(default=True)
     image = models.ImageField(upload_to='products/', blank=True)
+    image_alt = models.CharField(max_length=160, blank=True)
+    image_credit = models.CharField(max_length=200, blank=True)
+    image_source_url = models.URLField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

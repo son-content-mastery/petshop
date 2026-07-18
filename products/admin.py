@@ -22,7 +22,7 @@ class ProductAdmin(SummernoteModelAdmin):
     list_filter = ['available', 'created', 'updated', 'category']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
-    summernote_fields = ('body')
+    summernote_fields = ('body',)
 
 
 # Register the FAQ model separately (optional)
@@ -31,4 +31,3 @@ class FAQAdmin(admin.ModelAdmin):
     list_display = ['question', 'category', 'created', 'updated']
     list_filter = ['category', 'created', 'updated']
     search_fields = ['question', 'answer']
-

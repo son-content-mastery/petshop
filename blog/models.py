@@ -23,7 +23,20 @@ class Post(models.Model):
         null=True,
         blank=True
     )
-    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, related_name='posts') 
+    featured_image_alt = models.CharField(max_length=160, blank=True)
+    image_credit = models.CharField(max_length=200, blank=True)
+    image_source_url = models.URLField(blank=True)
+    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, related_name='posts')
+    related_categories = models.ManyToManyField(
+        'products.Category',
+        blank=True,
+        related_name='related_posts',
+    )
+    related_products = models.ManyToManyField(
+        'products.Product',
+        blank=True,
+        related_name='related_posts',
+    )
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -32,15 +45,3 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail', kwargs={'slug': self.slug})
-    
-
-
-
-
-
-
-
-
-
-
-

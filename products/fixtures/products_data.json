@@ -9,7 +9,7 @@
           "name": "Maxima Cat Food 15kg",
           "slug": "maxima-cat-food-15kg",
           "description": "อาหารแมวแม็กซิม่า เกรดซุปเปอร์พรีเมียม",
-          "body": "สูตรบำรุงขนและผิวหนัง ควบคุมความเค็ม ลดความเสี่ยงโรคไต เหมาะสำหรับแมวทุกสายพันธุ์...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>อาหารแมวสูตรบำรุงขนและผิวหนัง เหมาะสำหรับแมวโตทุกสายพันธุ์ ควรแบ่งปริมาณตามน้ำหนักและจัดน้ำสะอาดไว้เสมอ</p>",
           "price": 1250.00,
           "available": true,
           "image": "products/maxima_15kg.jpg"
@@ -18,7 +18,7 @@
           "name": "Royal Canin Indoor 27",
           "slug": "royal-canin-indoor-27",
           "description": "สำหรับแมวเลี้ยงในบ้าน กลิ่นมูลลดลง",
-          "body": "ช่วยลดกลิ่นมูล ปรับสมดุลพลังงานให้เหมาะสมกับแมวที่เลี้ยงในระบบปิด...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>สูตรสำหรับแมวเลี้ยงในบ้าน ช่วยให้จัดสัดส่วนพลังงานได้เหมาะกับแมวที่มีกิจกรรมน้อย ควรเปลี่ยนอาหารแบบค่อยเป็นค่อยไป</p>",
           "price": 540.00,
           "available": true,
           "image": "products/rc_indoor.jpg"
@@ -27,10 +27,23 @@
           "name": "Purina One Salmon",
           "slug": "purina-one-salmon",
           "description": "เพียวริน่าวัน สูตรปลาแซลมอนและทูน่า",
-          "body": "โปรตีนสูงจากเนื้อปลาแท้ ช่วยเสริมสร้างกล้ามเนื้อและหัวใจ...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>อาหารเม็ดสูตรปลาแซลมอนและทูน่า สำหรับแมวโต โปรดอ่านปริมาณแนะนำและข้อมูลสารอาหารบนบรรจุภัณฑ์ก่อนให้</p>",
           "price": 420.00,
           "available": true,
           "image": "products/purina_salmon.jpg"
+        },
+        {
+          "name": "Indoor Balance Chicken 1.5kg",
+          "slug": "indoor-balance-chicken-1-5kg",
+          "description": "อาหารเม็ดสูตรไก่สำหรับแมวโตเลี้ยงในบ้าน แบ่งมื้อง่าย",
+          "body": "<h2>อาหารเม็ดสำหรับแมวเลี้ยงในบ้าน</h2><p>สูตรไก่สำหรับแมวโตที่มีกิจกรรมระดับปานกลาง บรรจุ 1.5 กิโลกรัม เหมาะสำหรับผู้ที่ต้องการแบ่ง portion ให้สม่ำเสมอ</p><h3>วิธีเปลี่ยนอาหาร</h3><p>ผสมอาหารใหม่เพิ่มทีละน้อยในช่วง 7–10 วัน และติดตามน้ำหนัก อุจจาระ และความอยากอาหาร หากแมวมีโรคประจำตัวควรปรึกษาสัตวแพทย์ก่อนเปลี่ยนสูตร</p><p><a href=\"/blog/choose-dry-cat-food-by-age-and-lifestyle/\">อ่านคู่มือเลือกอาหารเม็ดตามวัยและไลฟ์สไตล์</a></p>",
+          "price": 389.00,
+          "available": true,
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/2019-10-23_18_51_36_Three_cats_eating_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/1280px-2019-10-23_18_51_36_Three_cats_eating_in_the_Franklin_Farm_section_of_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg",
+          "image_filename": "indoor-balance-chicken.jpg",
+          "image_alt": "ภาพประกอบแมวกำลังกินอาหารเม็ด",
+          "image_credit": "ภาพประกอบโดย Famartin, CC BY-SA 4.0, Wikimedia Commons",
+          "image_source_url": "https://commons.wikimedia.org/wiki/File:2019-10-23_18_51_36_Three_cats_eating_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg"
         }
       ]
     },
@@ -44,7 +57,7 @@
           "name": "Me-O Pouch Tuna",
           "slug": "meo-pouch-tuna",
           "description": "มีโอ อาหารเปียก รสปลาทูน่า",
-          "body": "ทำจากเนื้อปลาแท้ๆ กลิ่นหอมเย้ายวนใจ แมวทานยากยังต้องยอม...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>อาหารเปียกรสปลาทูน่าในซอง แบ่งเสิร์ฟสะดวก หลังเปิดควรเก็บในตู้เย็นและใช้ตามคำแนะนำบนบรรจุภัณฑ์</p>",
           "price": 18.00,
           "available": true,
           "image": "products/meo_pouch.jpg"
@@ -53,7 +66,7 @@
           "name": "Nekko Tuna in Jelly",
           "slug": "nekko-tuna-jelly",
           "description": "เน็กโกะ ปลาทูน่าในเยลลี่",
-          "body": "เนื้อปลาชิ้นโตในเยลลี่นุ่มๆ เสริมวิตามิน E และ Taurine...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>ปลาทูน่าในเยลลี่เนื้อนุ่ม พร้อมวิตามินอีและทอรีน ตรวจฉลากว่าเป็นอาหารหลักหรืออาหารเสริมก่อนจัดมื้อ</p>",
           "price": 15.00,
           "available": true,
           "image": "products/nekko_jelly.jpg"
@@ -62,10 +75,23 @@
           "name": "Sheba Succulent Chicken",
           "slug": "sheba-succulent-chicken",
           "description": "ชีบา อกไก่ฉีกในน้ำเกรวี่",
-          "body": "เกรดพรีเมียม เนื้อไก่นุ่มชุ่มฉ่ำน้ำเกรวี่...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>เนื้อไก่ในน้ำเกรวี่ เนื้อสัมผัสนุ่ม เหมาะสำหรับใช้เพิ่มความหลากหลายในมื้ออาหารตามปริมาณที่แนะนำ</p>",
           "price": 35.00,
           "available": false,
           "image": "products/sheba_chicken.jpg"
+        },
+        {
+          "name": "Ocean Recipe Tuna in Broth 70g",
+          "slug": "ocean-recipe-tuna-in-broth-70g",
+          "description": "อาหารเปียกทูน่าในน้ำซุป เพิ่มความชื้นในมื้ออาหาร",
+          "body": "<h2>ทูน่าในน้ำซุป ขนาด 70 กรัม</h2><p>อาหารเปียกเนื้อนุ่มสำหรับเพิ่มความหลากหลายและความชื้นในมื้ออาหาร อ่านฉลากเพื่อดูว่าเป็นอาหารครบถ้วนหรืออาหารเสริม และปรับพลังงานรวมทั้งวันให้พอดี</p><h3>การเก็บรักษา</h3><p>เสิร์ฟในอุณหภูมิห้อง หลังเปิดให้ปิดฝา เก็บในตู้เย็น และใช้ตามระยะเวลาที่ระบุบนบรรจุภัณฑ์</p><p><a href=\"/blog/wet-food-vs-dry-food-for-cats/\">อ่านวิธีเลือกระหว่างอาหารเปียกกับอาหารเม็ด</a></p>",
+          "price": 32.00,
+          "available": true,
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Catfood.jpg",
+          "image_filename": "ocean-recipe-tuna.jpg",
+          "image_alt": "ภาพประกอบแมวอยู่ข้างชามอาหาร",
+          "image_credit": "ภาพประกอบโดย Robdav69, สาธารณสมบัติ, Wikimedia Commons",
+          "image_source_url": "https://commons.wikimedia.org/wiki/File:Catfood.jpg"
         }
       ]
     },
@@ -79,7 +105,7 @@
           "name": "Ciao Churu Tuna",
           "slug": "ciao-churu-tuna",
           "description": "เชา ชูหรุ ขนมแมวเลียยอดฮิต",
-          "body": "ขนมแมวเลียอันดับ 1 จากญี่ปุ่น รสทูน่าเนื้อเนียน...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>ขนมแมวเลียรสทูน่า เนื้อเนียน ใช้เป็นรางวัลหรือเพิ่มปฏิสัมพันธ์กับแมว ควรให้ในปริมาณพอดีและไม่ใช้แทนอาหารหลัก</p>",
           "price": 55.00,
           "available": true,
           "image": "products/ciao_churu.jpg"
@@ -88,7 +114,7 @@
           "name": "Temptations Savoury Salmon",
           "slug": "temptations-salmon",
           "description": "เทมเทชันส์ รสแซลมอน",
-          "body": "กรอบนอก นุ่มใน เขย่าซองทีไรแมววิ่งมาทันที...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>ขนมแมวรสแซลมอน เนื้อสัมผัสกรอบนอกนุ่มใน แบ่งเป็นชิ้นเล็กเพื่อควบคุมพลังงานจากขนมในแต่ละวัน</p>",
           "price": 85.00,
           "available": true,
           "image": "products/temptations.jpg"
@@ -97,10 +123,23 @@
           "name": "JerHigh Jinny Stick",
           "slug": "jerhigh-jinny-stick",
           "description": "จินนี่ สติ๊ก รสไก่",
-          "body": "ขนมแท่งเคี้ยวเพลิน มี Green Tea Extract ช่วยลดกลิ่น...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>ขนมแมวแบบแท่งรสไก่ แบ่งให้เป็นคำเล็กได้สะดวก ตรวจปริมาณแนะนำและจัดน้ำสะอาดไว้ใกล้จุดให้อาหาร</p>",
           "price": 35.00,
           "available": true,
           "image": "products/jinny_stick.jpg"
+        },
+        {
+          "name": "Freeze-Dried Chicken Bites 40g",
+          "slug": "freeze-dried-chicken-bites-40g",
+          "description": "ขนมไก่ฟรีซดรายชิ้นเล็ก ใช้เป็นรางวัลระหว่างฝึก",
+          "body": "<h2>ขนมไก่ฟรีซดราย ขนาด 40 กรัม</h2><p>ขนมชิ้นเล็กสำหรับใช้เป็นรางวัล แบ่งหรือบิให้เหมาะกับขนาดตัวของแมว และปิดถุงให้สนิทหลังใช้</p><h3>คำแนะนำ</h3><p>ขนมไม่ใช่อาหารหลัก ควรรวมพลังงานจากขนมไว้ในปริมาณอาหารทั้งวัน หากแมวไม่เคยกินไก่ ให้เริ่มจากชิ้นเล็กและสังเกตอาการผิดปกติ</p><p><a href=\"/blog/healthy-cat-treat-guide/\">อ่านแนวทางให้ขนมแมวอย่างพอดี</a></p>",
+          "price": 159.00,
+          "available": true,
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Catfood.jpg",
+          "image_filename": "freeze-dried-chicken-bites.jpg",
+          "image_alt": "ภาพประกอบแมวอยู่ข้างชามอาหาร",
+          "image_credit": "ภาพประกอบโดย Robdav69, สาธารณสมบัติ, Wikimedia Commons",
+          "image_source_url": "https://commons.wikimedia.org/wiki/File:Catfood.jpg"
         }
       ]
     },
@@ -114,7 +153,7 @@
           "name": "Laser Pointer",
           "slug": "laser-pointer",
           "description": "เลเซอร์ของเล่นแมว",
-          "body": "ไฟเลเซอร์สีแดง ส่องได้ไกล ช่วยให้แมวได้วิ่งไล่จับอย่างสนุกสนาน...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>เลเซอร์สำหรับกิจกรรมไล่จับ ควรจบการเล่นด้วยของเล่นที่แมวจับได้จริง ห้ามส่องเข้าตาคนหรือสัตว์โดยตรง</p>",
           "price": 120.00,
           "available": true,
           "image": "products/laser.jpg"
@@ -123,7 +162,7 @@
           "name": "Catnip Mouse",
           "slug": "catnip-mouse",
           "description": "หนูแคทนิป",
-          "body": "ตุ๊กตาหนูยัดไส้กัญชาแมว (Catnip) ให้แมวเคลิบเคลิ้มและผ่อนคลาย...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>ตุ๊กตาหนูผสมแคทนิปสำหรับเล่นและกอด เก็บเมื่อเริ่มชำรุดและไม่ปล่อยให้แมวกลืนชิ้นส่วนขนาดเล็ก</p>",
           "price": 89.00,
           "available": true,
           "image": "products/mouse.jpg"
@@ -132,7 +171,7 @@
           "name": "Feather Wand",
           "slug": "feather-wand",
           "description": "ไม้ตกแมวขนนก",
-          "body": "ไม้ตกแมวแบบยาว ปลายติดขนนกและกระดิ่ง...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>ไม้ตกแมวปลายขนนกและกระดิ่ง ใช้เล่นร่วมกับเจ้าของ เก็บให้พ้นมือแมวเมื่อไม่มีผู้ดูแล</p>",
           "price": 45.00,
           "available": true,
           "image": "products/wand.jpg"
@@ -141,10 +180,23 @@
           "name": "Scratching Board",
           "slug": "scratching-board",
           "description": "ที่ลับเล็บแมวทรงโซฟา",
-          "body": "ทำจากกระดาษลูกฟูกอัดแข็ง ให้แมวฝนเล็บได้สะใจ ไม่ไปข่วนเฟอร์นิเจอร์...",
+          "body": "<h2>รายละเอียดสินค้า</h2><p>ที่ลับเล็บกระดาษลูกฟูกทรงโซฟา วางใกล้จุดพักหรือบริเวณที่แมวชอบลับเล็บ และเปลี่ยนเมื่อชำรุดมาก</p>",
           "price": 199.00,
           "available": true,
           "image": "products/scratch.jpg"
+        },
+        {
+          "name": "Interactive Treat Puzzle",
+          "slug": "interactive-treat-puzzle",
+          "description": "ถาดซ่อนอาหารปรับความยากได้ ช่วยเพิ่มกิจกรรมในมื้ออาหาร",
+          "body": "<h2>ถาดซ่อนอาหารสำหรับแมว</h2><p>ใช้แบ่งอาหารเม็ดหรือขนมชิ้นเล็กให้แมวใช้จมูกและอุ้งเท้าค้นหา เริ่มจากช่องที่เปิดง่ายแล้วค่อยเพิ่มความยากเมื่อแมวเข้าใจวิธีเล่น</p><h3>เล่นอย่างปลอดภัย</h3><p>วางบนพื้นเรียบและดูแลระหว่างใช้งาน ล้างหลังใช้ และหยุดใช้ทันทีหากมีชิ้นส่วนแตก ไม่ควรเติมอาหารเกิน portion ประจำวัน</p><p><a href=\"/blog/indoor-cat-enrichment-ideas/\">ดูไอเดียจัดกิจกรรมสำหรับแมวเลี้ยงในบ้าน</a></p>",
+          "price": 249.00,
+          "available": true,
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Cat_playing.jpeg",
+          "image_filename": "interactive-treat-puzzle.jpg",
+          "image_alt": "ภาพประกอบแมวกำลังเล่นของเล่น",
+          "image_credit": "ภาพประกอบโดย bayral, CC BY 2.5, Wikimedia Commons",
+          "image_source_url": "https://commons.wikimedia.org/wiki/File:Cat_playing.jpeg"
         }
       ]
     }
